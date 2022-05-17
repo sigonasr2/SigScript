@@ -23,7 +23,7 @@ function check() {
     if [ -f "$1/md5" ];
     then
         echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5"
-        curl -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5 --output /tmp/out
+        curl -H 'Cache-Control: no-cache, no-store' -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5 --output /tmp/out
         DIFF=$(diff $1/md5 /tmp/out) 
         if [ "$DIFF" != "" ] 
         then
@@ -40,19 +40,19 @@ function check() {
                             if [ "${CHECKLINE:0:1}" = "#" ]; then
                                 #This could be a different diff, try that one.
                                 echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5"
-                                curl -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5 --output /tmp/out
+                                curl -H 'Cache-Control: no-cache, no-store' -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5 --output /tmp/out
                                 DIFF=$(diff $1/md5 /tmp/out) 
                                 if [ "$DIFF" != "" ] 
                                 then
                                     echo " Differences detected here too."
-                                    curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1$g --output $1$g
+                                    curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1$g --output $1$g
                                 fi
                             else
-                                curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
+                                curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
                             fi
                         else
                             echo "===Could not find directory, assuming regular scripts directory exists."
-                            curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output scripts/$g
+                            curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output scripts/$g
                         fi
                     fi
                 fi
