@@ -20,7 +20,6 @@ function search() {
 function check() {
     echo "Check $1"
     FILES2=$(ls $1)
-    REDOWNLOAD=false
     if [ -f "$1/md5" ];
     then
         echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5"
@@ -29,7 +28,25 @@ function check() {
         if [ "$DIFF" != "" ] 
         then
             echo " Differences detected!"
-            REDOWNLOAD=true
+            for g in $FILES2
+            do
+                if [ -f $1$g ];
+                then
+                    echo "++Redownload $1$g..."
+                    if [ -f "$1$g" ]; then
+                        #Read the 2nd line and see if it has a special directory.
+                        CHECKLINE=$(sed -n '2{p;q;}' $1$g)
+                        if [ "${CHECKLINE:0:1}" = "#" ]; then
+                            curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1$g --output $1$g
+                        else
+                            curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
+                        fi
+                    else
+                        echo "===Could not find directory, assuming regular scripts directory exists."
+                        curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output scripts/$g
+                    fi
+                fi
+            done
         fi
     fi
     for g in $FILES2
@@ -38,22 +55,6 @@ function check() {
         then
             echo "$1$g is a directory"
             check $1$g/
-        else
-            if [ "$REDOWNLOAD" = "true" ]; then
-                echo "++Redownload $1$g..."
-                if [ -f "$1$g" ]; then
-                    #Read the 2nd line and see if it has a special directory.
-                    CHECKLINE=$(sed -n '2{p;q;}' $1$g)
-                    if [ "${CHECKLINE:0:1}" = "#" ]; then
-                        curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1$g --output $1$g
-                    else
-                        curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
-                    fi
-                else
-                    echo "===Could not find directory, assuming regular scripts directory exists."
-                    curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output scripts/$g
-                fi
-            fi
         fi
     done
 }
