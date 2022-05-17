@@ -2,14 +2,14 @@ This repository contains general build scripts and pipelines for all languages t
 ```bash
     #Short description about what I do
     #Language[Folder]
-    /* The script's code goes in here.
-        rm -Rf out/*
-        javac -Xlint:unchecked -cp ${PROJECT_DIR}/.. -d ${OUT_DIR} ${PROJECT_DIR}/*.java
-        printf "\n\n\nRunning Program...\n\n"
-        cd $OUT_DIR
-        java ${MAIN_CLASS} "$@"
-        ../scripts/clean.sh
-    */
+    # #The script's code goes in here.
+    # rm -Rf out/*
+    # javac -Xlint:unchecked -cp ${PROJECT_DIR}/.. -d ${OUT_DIR} ${PROJECT_DIR}/*.java
+    # printf "\n\n\nRunning Program...\n\n"
+    # cd $OUT_DIR
+    # java ${MAIN_CLASS} "$@"
+    # ../scripts/clean.sh
+    
 ```
 Each language will be in the following structure:
 ```
