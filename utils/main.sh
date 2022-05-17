@@ -13,7 +13,7 @@ if [ -z "$1" ]
     echo ""
     echo ""
     echo "  Command List:"
-    FILES=$(ls -1 ./scripts | sed -e 's/\.sh$//' | sed -e 's/^/    /')
+    FILES=$(ls -1A ./scripts | sed -e 's/\.sh$//' | sed -e 's/^/    /')
     for f in $FILES
     do
       if [ $f != "md5" ]; then

@@ -1,0 +1,2 @@
+echo "Initializing..."
+FILES=$(ls -dA */)
