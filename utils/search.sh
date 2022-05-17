@@ -41,7 +41,12 @@ function check() {
         else
             if [ "$REDOWNLOAD" = "true" ]; then
                 echo "++Redownload $1$g..."
-                curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
+                if [ -f "$1$g" ]; then
+                    curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
+                else
+                    echo "===Could not find directory, assuming regular scripts directory exists."
+                    curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output scripts/$g
+                fi
             fi
         fi
     done
