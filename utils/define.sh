@@ -6,8 +6,10 @@ function define() {
   eval "$1"='$value'
 }
 
-if [[ $(pwd) == *"SigScript" ]]; then
+if [[ $(pwd) != *"SigScript" ]]; then
   source utils/search.sh
+
+  find . -type f -name md5 -delete
 
   #Check for hashes
   FILES=$(ls -d */)

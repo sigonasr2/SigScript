@@ -8,7 +8,11 @@ function search() {
             search $1$g/
         else 
             echo "$1$g is a file"
-            md5sum < $1$g >> $1md5
+            if [ $g != "md5" ]; then
+                md5sum < $1$g >> $1md5
+            else
+                echo "  md5 file, ignoring..."
+            fi
         fi
     done
 }
@@ -16,11 +20,17 @@ function search() {
 function check() {
     echo "Check $1"
     FILES2=$(ls $1)
-    MD5_EXISTS=false
+    REDOWNLOAD=false
     if [ -f "$1/md5" ];
     then
-        echo "   md5: $MD5_EXISTS - https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5"
-        curl -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5
+        echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5"
+        curl -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5 --output /tmp/out
+        DIFF=$(diff $1/md5 /tmp/out) 
+        if [ "$DIFF" != "" ] 
+        then
+            echo " Differences detected!"
+            REDOWNLOAD=true
+        fi
     fi
     for g in $FILES2
     do
@@ -28,6 +38,11 @@ function check() {
         then
             echo "$1$g is a directory"
             check $1$g/
+        else
+            if [ "$REDOWNLOAD" = "true" ]; then
+                echo "++Redownload $1$g..."
+                curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
+            fi
         fi
     done
 }
