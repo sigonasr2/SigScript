@@ -38,7 +38,15 @@ function check() {
                             #Read the 2nd line and see if it has a special directory.
                             CHECKLINE=$(sed -n '2{p;q;}' $1$g)
                             if [ "${CHECKLINE:0:1}" = "#" ]; then
-                                curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1$g --output $1$g
+                                #This could be a different diff, try that one.
+                                echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5"
+                                curl -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5 --output /tmp/out
+                                DIFF=$(diff $1/md5 /tmp/out) 
+                                if [ "$DIFF" != "" ] 
+                                then
+                                    echo " Differences detected here too."
+                                    curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1$g --output $1$g
+                                fi
                             else
                                 curl https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
                             fi
