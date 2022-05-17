@@ -1,2 +1,15 @@
 echo "Initializing..."
 FILES=$(ls -dA */)
+LANGUAGES=()
+for f in $FILES
+do
+    if [ "$f" != "scripts/" ] && [ "$f" != "utils/" ];
+    then
+        LANGUAGES+=(""${f::-1}"")
+    fi
+done
+echo "Languages Detected:"
+for f in "${LANGUAGES[@]}"
+do
+     printf "\t%-15s\n" $f
+done
