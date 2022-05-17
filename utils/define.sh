@@ -12,6 +12,7 @@ if [[ $(pwd) != *"SigScript" ]]; then
   find . -type f -name md5 -delete
 
   #Check for hashes
+  FILES=$(ls -d */)
   for f in $FILES
   do 
       search $f
