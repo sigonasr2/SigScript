@@ -11,11 +11,6 @@ for f in $FILES
 do 
     search $f
 done
-FILES=$(ls -p | grep -v /)
-for f in $FILES
-do 
-    md5sum < $f >> md5
-done
 git add -u
 git add *
 git commit -m "$*"
