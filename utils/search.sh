@@ -1,14 +1,31 @@
 function search() {
-    FILES=$(ls $1)
-    for f in $FILES
+    FILES2=$(ls $1)
+    for g in $FILES2
     do
-        if [ -d $1$f ];
+        if [ -d $1$g ];
         then
-            echo "$1$f is a directory"
-            search $1$f/
+            echo "$1$g is a directory"
+            search $1$g/
         else 
-            echo "$1$f is a file"
-            md5sum < $1$f >> $1md5
+            echo "$1$g is a file"
+            md5sum < $1$g >> $1md5
+        fi
+    done
+}
+
+function check() {
+    echo "Check $1"
+    FILES2=$(ls $1)
+    if [ -f "$1/md5" ];
+    then
+        echo "   md5 exists"
+    fi
+    for g in $FILES2
+    do
+        if [ -d $1$g ];
+        then
+            echo "$1$g is a directory"
+            check $1$g/
         fi
     done
 }
