@@ -14,7 +14,7 @@ done
 FILES=$(ls -p | grep -v /)
 for f in $FILES
 do 
-    md5sum < $1$g >> $1md5
+    md5sum < $f >> md5
 done
 git add -u
 git add *
