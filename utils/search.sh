@@ -16,9 +16,11 @@ function search() {
 function check() {
     echo "Check $1"
     FILES2=$(ls $1)
+    MD5_EXISTS=false
     if [ -f "$1/md5" ];
     then
-        echo "   md5 exists"
+        MD5_EXISTS=true
+        echo "   md5: $MD5_EXISTS"
     fi
     for g in $FILES2
     do
@@ -26,6 +28,10 @@ function check() {
         then
             echo "$1$g is a directory"
             check $1$g/
+        else 
+            if [ "$MD5_EXISTS" = true ]; then
+                md5hash < curl -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/sig
+            fi
         fi
     done
 }
