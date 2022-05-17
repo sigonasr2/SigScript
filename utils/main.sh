@@ -1,0 +1,28 @@
+if [ -z "$1" ]
+  then
+    echo ""
+    echo "  Usage: ./sig <command> {args}"
+    echo ""
+    printf "====\tCurrent Configuration"
+    printf "\t====================="
+    for t in ${VARS[@]}
+    do
+      printf "\n\t%-15s%20s" $t ${!t}
+    done
+    printf "\n====================================================="
+    echo ""
+    echo ""
+    echo "  Command List:"
+    FILES=$(ls -1 ./scripts | sed -e 's/\.sh$//' | sed -e 's/^/    /')
+    for f in $FILES
+    do
+      if [ $f != "md5" ]; then
+        DESC="$(head -n1 ./scripts/$f.sh)"
+        printf "\n\t%-15s%-65s" $f "${DESC:1}"
+      fi
+    done
+    echo ""
+    exit
+fi
+
+./scripts/$1.sh "${*:2}"
