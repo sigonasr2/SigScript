@@ -29,7 +29,7 @@ function check() {
         if [ "$DIFF" != "" ] 
         then
             echo " Differences detected!"
-            
+            cat /tmp/out
             while IFS= read -r line
             do
                 IFS=':' read -ra split <<< $line
