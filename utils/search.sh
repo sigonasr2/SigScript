@@ -9,7 +9,8 @@ function search() {
         else 
             echo "$1$g is a file"
             if [ $g != "md5" ]; then
-                md5sum < $1$g >> $1md5
+                SUM=$(md5sum < $1$g)
+                SUM="$g:$SUM" >> $1md5
             else
                 echo "  md5 file, ignoring..."
             fi
