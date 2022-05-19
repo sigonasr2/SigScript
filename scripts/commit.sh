@@ -7,13 +7,12 @@ find . -type f -name md5 -delete
 
 #Generate a new hash for every sub-directory, which may require an update.
 FILES=$(cat utils/.updateDirectories) 
-AUTHORS=$(cat utils/.coauthors)
 COMMIT_MESSAGE="$*"
 while IFS= read -r line
 do
   COMMIT_MESSAGE+="
   $line"
-done < "$AUTHORS"
+done < "utils/.coauthors"
 for f in $FILES
 do 
     search $f
