@@ -25,8 +25,8 @@ function check() {
     then
         echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5"
         curl -H 'Cache-Control: no-cache, no-store' -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5 --output /tmp/out
-        DIFF=$(diff $1/md5 /tmp/out) 
-        if [ "$DIFF" != "" ] 
+        cmp -s $1/md5 /tmp/out
+        if [ "$?" -ne 0 ] 
         then
             echo " Differences detected!"
             cat /tmp/out 
@@ -45,8 +45,8 @@ function check() {
                                 #This could be a different diff, try that one.
                                 echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5"
                                 curl -H 'Cache-Control: no-cache, no-store' -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5 --output /tmp/out
-                                DIFF=$(diff $1/md5 /tmp/out) 
-                                if [ "$DIFF" != "" ] 
+                                cmp -s $1/md5 /tmp/out
+                                if [ "$?" -ne 0 ] 
                                 then
                                     echo " Differences detected here too."
                                     curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1$g --output $1$g
