@@ -5,7 +5,7 @@ while IFS= read -r line
 do
   COMMIT_MESSAGE+="
   $line"
-done < "utils/.coauthors"
+done < utils/.coauthors
 git add -u
 git add *
 git commit -m "$COMMIT_MESSAGE"

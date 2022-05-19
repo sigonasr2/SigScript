@@ -12,7 +12,7 @@ while IFS= read -r line
 do
   COMMIT_MESSAGE+="
   $line"
-done < "utils/.coauthors"
+done < utils/.coauthors
 for f in $FILES
 do 
     search $f
