@@ -63,7 +63,7 @@ function check() {
                         curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output scripts/$g
                     fi
                 fi
-            done < utils/.coauthors
+            done < $1/md5
         fi
     fi
     for g in $FILES2
