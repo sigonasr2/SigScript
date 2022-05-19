@@ -11,7 +11,7 @@ COMMIT_MESSAGE="$*"
 while IFS= read -r line
 do
   COMMIT_MESSAGE+="
-  $line"
+  Co-authored-by: $line"
 done < utils/.coauthors
 for f in $FILES
 do 
