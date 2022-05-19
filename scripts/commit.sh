@@ -9,11 +9,11 @@ find . -type f -name md5 -delete
 FILES=$(cat utils/.updateDirectories) 
 AUTHORS=$(cat utils/.coauthors)
 COMMIT_MESSAGE="$*"
-for a in $AUTHORS
+while IFS= read -r line
 do
-    COMMIT_MESSAGE+="
-    Co-authored-by: $a"
-done
+  COMMIT_MESSAGE+="
+  $line"
+done < "$AUTHORS"
 for f in $FILES
 do 
     search $f

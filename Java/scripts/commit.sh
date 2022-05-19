@@ -2,11 +2,11 @@
 #Java
 AUTHORS=$(cat utils/.coauthors)
 COMMIT_MESSAGE="$*"
-for a in $AUTHORS
+while IFS= read -r line
 do
-    COMMIT_MESSAGE+="
-    Co-authored-by: $a"
-done
+  COMMIT_MESSAGE+="
+  $line"
+done < "$AUTHORS"
 git add -u
 git add *
 git commit -m "$COMMIT_MESSAGE"
