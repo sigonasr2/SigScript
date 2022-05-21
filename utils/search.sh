@@ -37,6 +37,7 @@ function check() {
                 if [ "$g" != "md5" ]; then
                     if [ -f $1$g ];
                     then
+			if [ "$g" != ".coauthors" ]; then
                         echo "++Redownload $1$g..."
                         if [ -f "$1$g" ]; then
                             #Read the 2nd line and see if it has a special directory.
@@ -58,6 +59,7 @@ function check() {
                             echo "===Could not find directory, assuming regular scripts directory exists."
                             curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output scripts/$g
                         fi
+			fi
                     else 
                         echo "++==Downloading $1$g..."
                         curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
