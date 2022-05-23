@@ -24,7 +24,7 @@ function check() {
     if [ -f "$1/md5" ];
     then
         echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5"
-        curl -H 'Cache-Control: no-cache, no-store' -s "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5/?$(date +%s)" --output /tmp/out
+        curl -H 'Cache-Control: no-cache, no-store' -s "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5" --output /tmp/out
         cmp -s $1/md5 /tmp/out
         if [ "$?" -ne 0 ] 
         then
@@ -41,15 +41,15 @@ function check() {
                         if [ "$g" != ".coauthors" ]; then
                             echo "++Redownload $1$g..."
                             if [ -f "$1$g" ]; then
-                                curl -H 'Cache-Control: no-cache, no-store' "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g/?$(date +%s)" --output $1$g
+                                curl -H 'Cache-Control: no-cache, no-store' "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g" --output $1$g
                             else
                                 echo "===Could not find directory, assuming regular scripts directory exists."
-                                curl -H 'Cache-Control: no-cache, no-store' "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g/?$(date +%s)" --output $LANGUAGE/scripts/$g
+                                curl -H 'Cache-Control: no-cache, no-store' "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g" --output $LANGUAGE/scripts/$g
                             fi
                         fi
                     else 
                         echo "++==Downloading $1$g..."
-                        curl -H 'Cache-Control: no-cache, no-store' "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g/?$(date +%s)" --output $1$g
+                        curl -H 'Cache-Control: no-cache, no-store' "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g" --output $1$g
                     fi
                 fi
             done < /tmp/out
