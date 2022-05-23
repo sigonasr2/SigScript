@@ -15,6 +15,7 @@ if [ "$FIRST_LINE" = true ]; then
   COMMIT_MESSAGE+="
 
 Co-authored-by: $line"
+FIRST_LINE=false
 else
   COMMIT_MESSAGE+="
 Co-authored-by: $line"
