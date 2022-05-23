@@ -6,4 +6,4 @@ printf "\n\n\nRunning Program...\n\n"
 ORIGINAL_LOC=$(pwd)
 cd $OUT_DIR
 java ${MAIN_CLASS} "$@"
-${ORIGINAL_LOC}/scripts/clean.sh
+${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh

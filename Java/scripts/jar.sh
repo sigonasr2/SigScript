@@ -13,4 +13,4 @@ printf "\n\n\nRunning Program...\n\n"
 java -jar ${PROJECT_NAME}.jar "$@"
 mv ${PROJECT_NAME}.jar ${ORIGINAL_LOC}
 cd ..
-./scripts/clean.sh
+./${LANGUAGE}/scripts/clean.sh
