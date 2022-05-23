@@ -12,6 +12,7 @@ if [[ $(pwd) != *"SigScript" ]]; then
   source utils/search.sh
 
   find . -type f -name md5 -delete
+  find . -type f -name filelist -delete
 
   #Check for hashes
   FILES=$(cat utils/.updateDirectories)
