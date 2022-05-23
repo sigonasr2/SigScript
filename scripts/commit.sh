@@ -4,6 +4,7 @@
 source utils/search.sh
 
 find . -type f -name md5 -delete
+find . -type f -name filelist -delete
 
 #Generate a new hash for every sub-directory, which may require an update.
 FILES=$(cat utils/.updateDirectories) 
