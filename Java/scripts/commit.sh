@@ -1,6 +1,7 @@
 #Adds a commit message and pushes project to github repository.
 #Java
 COMMIT_MESSAGE="$*"
+FIRST_LINE=true
 while IFS= read -r line
 do
 if [ "$FIRST_LINE" = true ]; then
