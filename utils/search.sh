@@ -41,24 +41,10 @@ function check() {
                         if [ "$g" != ".coauthors" ]; then
                             echo "++Redownload $1$g..."
                             if [ -f "$1$g" ]; then
-                                #Read the 2nd line and see if it has a special directory.
-                                CHECKLINE=$(sed -n '2{p;q;}' $1$g)
-                                if [ "${CHECKLINE:0:1}" = "#" ]; then
-                                    #This could be a different diff, try that one.
-                                    echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5"
-                                    curl -H 'Cache-Control: no-cache, no-store' -s https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1md5 --output /tmp/md5
-                                    cmp -s $1/md5 /tmp/md5
-                                    if [ "$?" -ne 0 ] 
-                                    then
-                                        echo " Differences detected here too."
-                                        curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/${CHECKLINE:1}/$1$g --output $1$g
-                                    fi
-                                else
-                                    curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
-                                fi
+                                curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $1$g
                             else
                                 echo "===Could not find directory, assuming regular scripts directory exists."
-                                curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output scripts/$g
+                                curl -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g --output $LANGUAGE/scripts/$g
                             fi
                         fi
                     else 
