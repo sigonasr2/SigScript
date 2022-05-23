@@ -7,5 +7,4 @@ printf "\n\n\nRunning Program...\n\n"
 ORIGINAL_LOC=$(pwd)
 cd $OUT_DIR
 java ${MAIN_CLASS} "$@"
-echo $LANGUAGE
 ${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh
