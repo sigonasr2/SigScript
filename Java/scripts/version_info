@@ -1,3 +1,2 @@
-source utils/define.sh
-define SOURCE_VERSION "1.11"
-define TARGET_VERSION "1.8"
+export SOURCE_VERSION="1.11"
+export TARGET_VERSION="1.8"
