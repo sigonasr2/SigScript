@@ -1,5 +1,6 @@
 #Builds and runs the project.
 #Java
+
 source ${LANGUAGE}/scripts/version_info
 rm -Rf out/*
 javac -source ${SOURCE_VERSION} -target -target ${TARGET_VERSION} -Xlint:unchecked -cp ${PROJECT_DIR}/.. -d ${OUT_DIR} ${PROJECT_DIR}/*.java
