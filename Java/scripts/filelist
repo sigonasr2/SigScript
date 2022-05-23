@@ -1,0 +1,5 @@
+build.sh
+clean.sh
+commit.sh
+jar.sh
+version_info
