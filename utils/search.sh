@@ -38,7 +38,7 @@ function check() {
                 if [ "$g" != "md5" ]; then
                     if [ -f $1$g ];
                     then
-                        if [ "$g" != ".coauthors" ]; then
+                        if [ "$g" != ".coauthors" ] && [ "$g" != "version_info" ]; then
                             echo "++Redownload $1$g..."
                             if [ -f "$1$g" ]; then
                                 curl -H 'Cache-Control: no-cache, no-store' "https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1$g" --output $1$g
