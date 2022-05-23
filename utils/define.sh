@@ -1,5 +1,7 @@
 export VARS=("")
 
+export LANGUAGE=""
+
 function define() {
   VARS+=("$1")
   value="${*:2}"
