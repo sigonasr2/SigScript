@@ -34,7 +34,7 @@ function check() {
             do
                 IFS=':' read -ra split <<< $line
                 g="${split[0]}"
-                echo "LINE -- $g"
+                echo "LINE -- $g" 
                 if [ "$g" != "md5" ]; then
                     if [ -f $1$g ];
                     then
