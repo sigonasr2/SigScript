@@ -13,7 +13,7 @@ if [ -z "$1" ]
     echo ""
     echo ""
     echo "  Command List:"
-    FILES=$(ls -1A ./$LANGUAGE/scripts | sed -e 's/\.sh$//' | sed -e 's/^/    /')
+    FILES=$(ls -1A ./$LANGUAGE/scripts 2>/dev/null | sed -e 's/\.sh$//' | sed -e 's/^/    /')
     for f in $FILES
     do
       if [ $f != "md5" ] && [ $f != "version_info" ] && [ $f != "filelist" ]; then

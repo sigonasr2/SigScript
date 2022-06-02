@@ -1,5 +1,5 @@
 function search() {
-    FILES2=$(ls -A $1)
+    FILES2=$(ls -A $1 2>/dev/null)
     for g in $FILES2
     do
         if [ -d $1$g ];
@@ -23,7 +23,7 @@ function search() {
 
 function check() {
     echo "Check $1"
-    FILES2=$(ls -A $1)
+    FILES2=$(ls -A $1 2>/dev/null)
     if [ -f "$1/md5" ];
     then
         echo "   md5: https://raw.githubusercontent.com/sigonasr2/SigScript/main/$1md5"
