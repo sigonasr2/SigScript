@@ -1,5 +1,6 @@
 if [ -z "$1" ]
   then
+    ./$LANGUAGE/scripts/update.sh
     echo ""
     echo "  Usage: ./sig <command> {args}"
     echo ""

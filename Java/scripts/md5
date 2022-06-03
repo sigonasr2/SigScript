@@ -2,3 +2,4 @@ build.sh:55f0208b07ba384f45009d6f92fe88fe  -
 clean.sh:96ce35f2d2dcb555421e00a6afda23ca  -
 commit.sh:5e4448db9ad48e72ec3a1ff4f5763b41  -
 jar.sh:56f9b7c6dc8e85f28ffefe9ce82b1f07  -
+update.sh:3be721658983183efa395984acd96b03  -

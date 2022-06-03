@@ -2,4 +2,5 @@ build.sh
 clean.sh
 commit.sh
 jar.sh
+update.sh
 version_info
