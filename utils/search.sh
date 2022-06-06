@@ -38,7 +38,7 @@ function check() {
                 IFS=':' read -ra split <<< $line
                 g="${split[0]}"
                 echo "LINE -- $g" 
-                if [ "$g" != "md5" ] && [ "$g" != "filelist" ]; then
+                if [ "$g" != "md5" ] && [ "$g" != "filelist" ] && [ "$g" != ".package.files" ]; then
                     if [ -f $1$g ];
                     then
                         if [ "$g" != ".coauthors" ] && [ "$g" != "version_info" ]; then
@@ -72,7 +72,7 @@ function check() {
                 IFS=':' read -ra split <<< $line
                 g="${split[0]}"
                 echo "LINE -- $g" 
-                if [ "$g" != "md5" ] && [ "$g" != "filelist" ]; then
+                if [ "$g" != "md5" ] && [ "$g" != "filelist" ] && [ "$g" != ".package.files" ]; then
                     if [ -f $1$g ];
                     then
                         if [ "$g" != ".coauthors" ] && [ "$g" != "version_info" ]; then
