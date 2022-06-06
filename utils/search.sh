@@ -8,7 +8,7 @@ function search() {
             search $1$g/
         else 
             echo "$1$g is a file"
-            if [ $g != "md5" ] && [ $g != "filelist" ]; then
+            if [ $g != "md5" ] && [ $g != "filelist" ] && [ $g != ".package.files" ]; then
                 if [ $g != ".coauthors" ] && [ $g != "version_info" ]; then
                     SUM=$(md5sum < $1$g)
                     echo "$g:$SUM" >> $1md5
