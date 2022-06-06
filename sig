@@ -1,3 +1,5 @@
+export AUTO_UPDATE=true
+
 source utils/define.sh
 
 define PROJECT_NAME "JavaProjectTemplate"
@@ -7,7 +9,5 @@ define OUT_DIR "bin"
 define LIBRARY_PATH "../lib"
 define CLASS_PATH "${PROJECT_DIR}/..:lib/bin"
 define LANGUAGE ""
-
-define AUTO_UPDATE true
 
 source utils/main.sh
