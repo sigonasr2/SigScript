@@ -2,7 +2,7 @@
 #Java
 source ${LANGUAGE}/scripts/version_info
 rm -Rf out/*
-javac -source ${SOURCE_VERSION} -target ${TARGET_VERSION} -Xlint:unchecked -cp ${PROJECT_DIR}/.. -Djava.library.path=${LIBRARY_PATH} -d ${OUT_DIR} ${PROJECT_DIR}/*.java
+javac -source ${SOURCE_VERSION} -target ${TARGET_VERSION} -Xlint:unchecked -cp ${PROJECT_DIR}/.. -Djava.library.path="${LIBRARY_PATH}" -d ${OUT_DIR} ${PROJECT_DIR}/*.java
 printf "\n\n\nRunning Program...\n\n"
 ORIGINAL_LOC=$(pwd)
 cd $OUT_DIR
