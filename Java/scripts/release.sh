@@ -2,7 +2,6 @@
 #Java
 source ${LANGUAGE}/scripts/version_info
 TARGET_FILE="${PROJECT_NAME}_${RELEASE_VERSION}.zip"
-rm $TARGET_FILE
 FILES=$(cat ${LANGUAGE}/scripts/.package.files) 
 echo "Creating Package $TARGET_FILE..."
 for f in $FILES
