@@ -7,4 +7,6 @@ define OUT_DIR "bin"
 define LANGUAGE ""
 define LIBRARY_PATH "lib"
 
+define AUTO_UPDATE true
+
 source utils/main.sh
