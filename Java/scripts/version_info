@@ -1,2 +1,2 @@
-export SOURCE_VERSION="1.11"
-export TARGET_VERSION="1.8"
+export SOURCE_VERSION="8"
+export TARGET_VERSION="8"
