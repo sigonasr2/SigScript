@@ -7,7 +7,7 @@ FILES=$(cat ${LANGUAGE}/scripts/.package.files)
 echo "Creating Package $TARGET_FILE..."
 for f in $FILES
 do 
-    zip -ur TARGET_FILE $f
+    zip -ur $TARGET_FILE $f
 done
 echo "Complete!"
 echo ""
