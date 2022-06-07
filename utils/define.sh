@@ -8,7 +8,7 @@ function define() {
   eval export "$1"='$value'
 }
 
-if [[ $(pwd) != *"SigScript" && $AUTO_UPDATE = "true" ]]; then
+if [[ $(pwd) != *"SigScript" && $AUTO_UPDATE = "true" && $1 != "update" ]]; then
   source utils/search.sh
 
   find . -type f -name md5 -delete
