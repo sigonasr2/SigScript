@@ -5,7 +5,7 @@ rm -Rf bin/*
 javac -source ${SOURCE_VERSION} -target ${TARGET_VERSION} -Xlint:unchecked -cp ${CLASS_PATH} -d ${OUT_DIR} ${PROJECT_DIR}/${PROJECT_NAME}.java
 printf "\n\n\nGenerating Manifest...\n\n"
 touch manifest
-echo "Main-Class: ${MAIN_CLASS}" >> manifest
+echo "Main-Class: ${MAIN_CLASS}" > manifest
 printf "\n\n\nCreating Jar...\n\n"
 ORIGINAL_LOC=$(pwd)
 cd ${OUT_DIR}
