@@ -5,5 +5,5 @@ javac -source ${SOURCE_VERSION} -target ${TARGET_VERSION} -Xlint:unchecked -cp $
 printf "\n\n\nRunning Program...\n\n"
 ORIGINAL_LOC=$(pwd)
 cd $OUT_DIR
-java -cp .:../lib/bin -Djava.library.path="${LIBRARY_PATH}" ${MAIN_CLASS} "$@"
+java ${CUSTOM_PARAMS} -cp .:../lib/bin -Djava.library.path="${LIBRARY_PATH}" ${MAIN_CLASS} "$@"
 ${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh

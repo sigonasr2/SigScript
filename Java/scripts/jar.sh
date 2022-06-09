@@ -12,6 +12,6 @@ cd ${OUT_DIR}
 jar cfm ${PROJECT_NAME}.jar ${ORIGINAL_LOC}/manifest sig
 jar uf ${PROJECT_NAME}.jar -C ../lib/bin/ .
 printf "\n\n\nRunning Program...\n\n"
-java -cp .:../lib/bin -Djava.library.path="${LIBRARY_PATH}" -jar ${PROJECT_NAME}.jar "$@"
+java ${CUSTOM_PARAMS} -cp .:../lib/bin -Djava.library.path="${LIBRARY_PATH}" -jar ${PROJECT_NAME}.jar "$@"
 ./${LANGUAGE}/scripts/clean.sh
 cd ..
