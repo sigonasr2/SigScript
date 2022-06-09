@@ -1,5 +1,6 @@
 build.sh:293285766098a4e3d4d708e58a69de82  -
 clean.sh:668a2f9b568c55f6a044a509315032f6  -
 commit.sh:5e4448db9ad48e72ec3a1ff4f5763b41  -
-jar.sh:95faf6377e8d9e2f486bdd0860f604f0  -
+jar.sh:2f59229fcaf02779bfaa43144f3be66f  -
+release.sh:b1b62203411b18d0fec1db3dc2e5a061  -
 update.sh:3be721658983183efa395984acd96b03  -

@@ -8,7 +8,7 @@ function search() {
             search $1$g/
         else 
             echo "$1$g is a file"
-            if [ $g != "md5" ] && [ $g != "filelist" ]; then
+            if [ $g != "md5" ] && [ $g != "filelist" ] && [ $g != ".package.files" ]; then
                 if [ $g != ".coauthors" ] && [ $g != "version_info" ]; then
                     SUM=$(md5sum < $1$g)
                     echo "$g:$SUM" >> $1md5
@@ -38,7 +38,7 @@ function check() {
                 IFS=':' read -ra split <<< $line
                 g="${split[0]}"
                 echo "LINE -- $g" 
-                if [ "$g" != "md5" ] && [ "$g" != "filelist" ]; then
+                if [ "$g" != "md5" ] && [ "$g" != "filelist" ] && [ "$g" != ".package.files" ]; then
                     if [ -f $1$g ];
                     then
                         if [ "$g" != ".coauthors" ] && [ "$g" != "version_info" ]; then
@@ -72,7 +72,7 @@ function check() {
                 IFS=':' read -ra split <<< $line
                 g="${split[0]}"
                 echo "LINE -- $g" 
-                if [ "$g" != "md5" ] && [ "$g" != "filelist" ]; then
+                if [ "$g" != "md5" ] && [ "$g" != "filelist" ] && [ "$g" != ".package.files" ]; then
                     if [ -f $1$g ];
                     then
                         if [ "$g" != ".coauthors" ] && [ "$g" != "version_info" ]; then
