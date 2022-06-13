@@ -1,4 +1,4 @@
-#Builds a runnable jar file using ${MAIN_CLASS} as an entry point and then runs the newly generated jar.
+#Builds a runnable jar file using ${MAIN_CLASS} as an entry point and then runs the newly generated jar for Windows.
 #Java
 source ${LANGUAGE}/scripts/version_info
 rm -Rf bin/*

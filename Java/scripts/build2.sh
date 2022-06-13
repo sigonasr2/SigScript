@@ -1,4 +1,4 @@
-#Builds and runs the project.
+#Builds and runs the project for Windows.
 #Java
 source ${LANGUAGE}/scripts/version_info
 javac -source ${SOURCE_VERSION} -target ${TARGET_VERSION} -Xlint:unchecked -cp ${CLASS_PATH_WINDOWS} -d ${OUT_DIR} ${PROJECT_DIR}/*.java
