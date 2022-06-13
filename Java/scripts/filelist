@@ -1,6 +1,8 @@
+build2.sh
 build.sh
 clean.sh
 commit.sh
+jar2.sh
 jar.sh
 release.sh
 update.sh
