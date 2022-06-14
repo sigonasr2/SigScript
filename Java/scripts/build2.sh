@@ -5,5 +5,13 @@ javac -source ${SOURCE_VERSION} -target ${TARGET_VERSION} -Xlint:unchecked -cp $
 printf "\n\n\nRunning Program...\n\n"
 ORIGINAL_LOC=$(pwd)
 cd $OUT_DIR
-java ${CUSTOM_PARAMS} -cp ".;../lib/bin/ " "-Djava.library.path=${LIBRARY_PATH}" ${MAIN_CLASS} "$@"
+if java ${CUSTOM_PARAMS} -cp ".;../lib/bin/" -XX:+UseZGC "-Djava.library.path=${LIBRARY_PATH}" ${MAIN_CLASS} "$@"; then
+    ${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh
+    return 
+fi
+if java ${CUSTOM_PARAMS} -cp ".;../lib/bin/" -XX:+UnlockExperimentalVMOptions -XX:+UseZGC "-Djava.library.path=${LIBRARY_PATH}" ${MAIN_CLASS} "$@"; then
+    ${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh
+    return 
+fi
+java ${CUSTOM_PARAMS} -cp ".;../lib/bin/" -XX:+PrintCommandLineFlags "-Djava.library.path=${LIBRARY_PATH}" ${MAIN_CLASS} "$@"
 ${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh
