@@ -7,11 +7,11 @@ ORIGINAL_LOC=$(pwd)
 cd $OUT_DIR
 if java ${CUSTOM_PARAMS} -cp ".;../lib/bin/" -XX:+UseZGC "-Djava.library.path=${LIBRARY_PATH}" ${MAIN_CLASS} "$@"; then
     ${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh
-    return 
+    exit
 fi
 if java ${CUSTOM_PARAMS} -cp ".;../lib/bin/" -XX:+UnlockExperimentalVMOptions -XX:+UseZGC "-Djava.library.path=${LIBRARY_PATH}" ${MAIN_CLASS} "$@"; then
     ${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh
-    return 
+    exit
 fi
 java ${CUSTOM_PARAMS} -cp ".;../lib/bin/" -XX:+PrintCommandLineFlags "-Djava.library.path=${LIBRARY_PATH}" ${MAIN_CLASS} "$@"
 ${ORIGINAL_LOC}/${LANGUAGE}/scripts/clean.sh
