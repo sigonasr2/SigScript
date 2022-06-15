@@ -9,9 +9,9 @@ elif [ "$1" = "mac" ];then
     echo "Not implemented yet."
 elif [ "$1" = "linux" ];then
     echo "Creating a package for Linux..."
+    FILES=$(cat ${LANGUAGE}/scripts/.package.files) 
     cd ..
     mkdir -vp RabiCloneOut/in
-    FILES=$(cat ${LANGUAGE}/scripts/.package.files) 
     for f in $FILES
     do 
         cp -Rv $f RabiCloneOut/in
