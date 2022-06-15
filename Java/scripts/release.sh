@@ -13,6 +13,7 @@ elif [ "$1" = "linux" ];then
     jpackage --input RabiClone --main-jar bin/RabiClone.jar --main-class sig.RabiClone --type app-image --dest RabiCloneOut
     cp -R RabiCloneOut/RabiClone/lib/app/* RabiCloneOut/RabiClone
     jpackage --app-image RabiCloneOut/RabiClone --name RabiClone
+    rm -Rf RabiCloneOut
     cd RabiClone
     echo "Done!"
 else
