@@ -1,6 +1,7 @@
 #Use ./sig release <windows|mac|linux> to create a custom installer based on OS.
 #Java
 source ${LANGUAGE}/scripts/version_info
+FILES=$(cat ${LANGUAGE}/scripts/.package.files) 
 if [ "$1" = "windows" ];then
     echo "Creating a package for Windows..."
     echo "Not implemented yet."
@@ -9,7 +10,6 @@ elif [ "$1" = "mac" ];then
     echo "Not implemented yet."
 elif [ "$1" = "linux" ];then
     echo "Creating a package for Linux..."
-    FILES=$(cat ${LANGUAGE}/scripts/.package.files) 
     cd ..
     mkdir -vp RabiCloneOut/in
     for f in $FILES
