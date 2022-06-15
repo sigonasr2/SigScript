@@ -10,7 +10,13 @@ elif [ "$1" = "mac" ];then
 elif [ "$1" = "linux" ];then
     echo "Creating a package for Linux..."
     cd ..
-    jpackage --verbose --input RabiClone --main-jar bin/RabiClone.jar --main-class sig.RabiClone --type app-image --dest RabiCloneOut
+    mkdir -v RabiCloneOut/in
+    FILES=$(cat ${LANGUAGE}/scripts/.package.files) 
+    for f in $FILES
+    do 
+        cp -Rvp $f RabiCloneOut/in
+    done
+    jpackage --verbose --input RabiCloneOut/in --main-jar bin/RabiClone.jar --main-class sig.RabiClone --type app-image --dest RabiCloneOut
     cp -Rv RabiCloneOut/RabiClone/lib/app/* RabiCloneOut/RabiClone
     jpackage --verbose --app-image RabiCloneOut/RabiClone --name RabiClone
     rm -Rfv RabiCloneOut
