@@ -1,4 +1,4 @@
-#Use ./sig package <windows|mac|linux> to create a custom installer based on OS.
+#Use ./sig release <windows|mac|linux> to create a custom installer based on OS.
 #Java
 source ${LANGUAGE}/scripts/version_info
 if [ "$1" = "windows" ];then
@@ -15,4 +15,7 @@ elif [ "$1" = "linux" ];then
     jpackage --app-image RabiCloneOut/RabiClone --name RabiClone
     cd RabiClone
     echo "Done!"
+else
+    echo "Usage: "
+    echo "  ./sig package <windows|mac|linux>"
 fi
