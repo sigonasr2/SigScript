@@ -17,5 +17,5 @@ elif [ "$1" = "linux" ];then
     echo "Done!"
 else
     echo "Usage: "
-    echo "  ./sig package <windows|mac|linux>"
+    echo "  ./sig release <windows|mac|linux>"
 fi
