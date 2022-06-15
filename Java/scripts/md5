@@ -4,5 +4,6 @@ clean.sh:668a2f9b568c55f6a044a509315032f6  -
 commit.sh:5e4448db9ad48e72ec3a1ff4f5763b41  -
 jar2.sh:7977fc138ee5db798d08c34734f0be93  -
 jar.sh:821d5a109324d405f05c35c4bb129375  -
-release.sh:b1b62203411b18d0fec1db3dc2e5a061  -
+release.sh:33ea22e29252fae1c750d534dbf4b0aa  -
 update.sh:3be721658983183efa395984acd96b03  -
+zip.sh:273f5a83b80a8e54022d60514dfeec0a  -

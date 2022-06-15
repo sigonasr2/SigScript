@@ -1,14 +1,18 @@
-#Creates a zip file containing all project contents.
+#Use ./sig package <windows|mac|linux> to create a custom installer based on OS.
 #Java
 source ${LANGUAGE}/scripts/version_info
-TARGET_FILE="${PROJECT_NAME}_${RELEASE_VERSION}.zip"
-FILES=$(cat ${LANGUAGE}/scripts/.package.files) 
-echo "Creating Package $TARGET_FILE..."
-for f in $FILES
-do 
-    zip -ur $TARGET_FILE $f
-done
-echo "Complete!"
-echo ""
-echo ""
-echo ""
+if [ "$1" = "windows" ];then
+    echo "Creating a package for Windows..."
+    echo "Not implemented yet."
+elif [ "$1" = "mac" ];then
+    echo "Creating a package for Mac..."
+    echo "Not implemented yet."
+elif [ "$1" = "linux" ];then
+    echo "Creating a package for Linux..."
+    cd ..
+    jpackage --input RabiClone --main-jar bin/RabiClone.jar --main-class sig.RabiClone --type app-image --dest RabiCloneOut
+    cp -R RabiCloneOut/RabiClone/lib/app/* RabiCloneOut/RabiClone
+    jpackage --app-image RabiCloneOut/RabiClone --name RabiClone
+    cd RabiClone
+    echo "Done!"
+fi

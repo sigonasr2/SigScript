@@ -7,3 +7,4 @@ jar.sh
 release.sh
 update.sh
 version_info
+zip.sh
