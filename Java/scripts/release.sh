@@ -14,9 +14,9 @@ elif [ "$1" = "linux" ];then
     mkdir -vp RabiCloneOut/in
     for f in $FILES
     do 
-        cp -Rv $PROJECT_NAME/$f RabiCloneOut/in
+        cp -Rv --parents $PROJECT_NAME/$f RabiCloneOut/in
     done
-    jpackage --verbose --input RabiCloneOut/in --main-jar bin/RabiClone.jar --main-class sig.RabiClone --type app-image --dest RabiCloneOut
+    jpackage --verbose --input RabiCloneOut/in/RabiClone --main-jar bin/RabiClone.jar --main-class sig.RabiClone --type app-image --dest RabiCloneOut
     cp -Rv RabiCloneOut/RabiClone/lib/app/* RabiCloneOut/RabiClone
     jpackage --verbose --app-image RabiCloneOut/RabiClone --name RabiClone
     rm -Rfv RabiCloneOut
