@@ -25,4 +25,4 @@ if [ -z "$1" ]
     exit
 fi
 
-./$LANGUAGE/scripts/$1.sh "${*:2}"
+./$LANGUAGE/scripts/$1.sh "${@:2}"
